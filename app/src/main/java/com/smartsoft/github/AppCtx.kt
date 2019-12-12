@@ -68,7 +68,7 @@ fun <T> MutableLiveData<T>.observe(owner: LifecycleOwner, observer: (value: T) -
     })
 }
 
-class GhViewModel(private val gitHub: GitHub) : ViewModel() {
+class GhViewModel() : ViewModel() {
 
     val users: MutableLiveData<List<User>> = MutableLiveData()
 
@@ -81,7 +81,7 @@ class GhViewModel(private val gitHub: GitHub) : ViewModel() {
 
 class AppCtx {
 
-    fun mkHttpClient(): OkHttpClient {
+    private fun mkHttpClient(): OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BASIC
         return OkHttpClient.Builder()
@@ -89,7 +89,7 @@ class AppCtx {
             .build()
     }
 
-    fun mkGitHubService(): GitHubService {
+    private fun mkGitHubService(): GitHubService {
         val rr = Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -103,7 +103,7 @@ class AppCtx {
     }
 
     fun mkGhViewModel(): GhViewModel {
-        return GhViewModel(mkGitHub())
+        return GhViewModel()
     }
 
 }
