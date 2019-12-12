@@ -26,22 +26,12 @@ typealias GhDispatch = (ev: GhAction) -> Unit
 
 class MainActivity : AppCompatActivity() {
 
-    private val appCtx: AppCtx = AppCtx()
-//    private lateinit var viewModel: GhViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        viewModel = appCtx.mkGhViewModel()
-//        val users: List<User> = viewModel.users.value ?: emptyList()
         setContent {
             GitHubApp()
         }
-
-//        viewModel.observe(theme)
-
-
     }
-
 
 }
 
@@ -60,19 +50,15 @@ fun GitHubApp() {
     val appCtx = AppCtx()
     val gitHub = appCtx.mkGitHub()
 
-
     fun fetchUsersRemoteAsync() {
-        println("fetchUsersRemoteAsync")
         gitHub.fetchUsersAsync(setUsers)
     }
 
     fun fetchUsersDummy() {
-        println("fetchUsersDummy")
         setUsers(GitHub.dummyUsers)
     }
 
     fun clearUsers() {
-        println("clearUsers")
         setUsers(emptyList())
     }
 
@@ -84,6 +70,7 @@ fun GitHubApp() {
             GhAction.ClearUsers -> clearUsers()
         }
     }
+
     MaterialTheme {
         GitHubVu(users = users, dispatch = ::dispatch)
     }
@@ -98,7 +85,8 @@ fun GitHubPreview() {
 
 @Composable
 fun GitHubVu(users: List<User>, dispatch: GhDispatch) {
-    Surface(color = Color.Magenta) {
+    val colors = +MaterialTheme.colors()
+    Surface(color = colors.background) {
         Row(modifier = ExpandedWidth) {
             Column {
                 ButtonsVu(dispatch)
@@ -113,7 +101,7 @@ fun GitHubVu(users: List<User>, dispatch: GhDispatch) {
 
 @Composable
 fun UsersVu(users: List<User>) {
-    Surface(color = Color.Cyan) {
+//    Surface(color = Color.Cyan) {
         VerticalScroller(modifier = Expanded) {
             Column(modifier = ExpandedWidth) {
                 users.forEach {
@@ -121,14 +109,15 @@ fun UsersVu(users: List<User>) {
                 }
             }
         }
-    }
+//    }
 }
 
 @Composable
 fun ButtonsVu(dispatch: GhDispatch) {
-    Surface(color = Color.Yellow) {
+    val colors = +MaterialTheme.colors()
+    Surface(color = colors.background) {
         Column() {
-            Btn(text = "Async", action = GhAction.FetchUsersAsync, dispatch = dispatch)
+            Btn(text = "Fetch", action = GhAction.FetchUsersAsync, dispatch = dispatch)
             Btn(text = "Dummy", action = GhAction.FetchDummyUsers, dispatch = dispatch)
             Btn(text = "Clear", action = GhAction.ClearUsers, dispatch = dispatch)
         }
