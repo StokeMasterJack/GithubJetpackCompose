@@ -68,7 +68,7 @@ fun <T> MutableLiveData<T>.observe(owner: LifecycleOwner, observer: (value: T) -
     })
 }
 
-class GhViewModel() : ViewModel() {
+class GhViewModel : ViewModel() {
 
     val users: MutableLiveData<List<User>> = MutableLiveData()
 

@@ -30,12 +30,8 @@ class GitHubActivityUsingViewModel : AppCompatActivity() {
 @Composable
 fun GitHubAppUsingViewModel(gitHub: GitHub, viewModel: GhViewModel) {
 
-    println("Using ViewModel")
-
     fun fetchUsersRemoteAsync() {
-        gitHub.fetchUsersAsync {
-            viewModel.users.value = it
-        }
+        gitHub.fetchUsersAsync(viewModel.users::postValue)
     }
 
     fun fetchUsersDummy() {

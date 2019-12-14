@@ -22,7 +22,6 @@ class GitHubActivityUsingState : AppCompatActivity() {
 @Composable
 fun GitHubAppUsingState() {
 
-    println("Using setState")
     val (users, setUsers) = +state { emptyList<User>() }
 
     val appCtx = AppCtx()
