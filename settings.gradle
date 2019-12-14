@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "jetpack-github"
+rootProject.name = "JetpackGithub"
