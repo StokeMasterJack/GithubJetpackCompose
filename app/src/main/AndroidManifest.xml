@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-<!--        change android:name to .MainActivityUsingViewModel for example using ViewModel -->
         <activity
             android:name=".MainActivity"
             android:label="GitHub Jetpack"
@@ -23,6 +22,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".GitHubActivityUsingState"
+            android:label="GitHub - State"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="com.smartsoft.github.GitHubActivityUsingState" />
+
+                <category android:name="com.smartsoft.github.GitHubActivityUsingStateCategory" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".GitHubActivityUsingViewModel"
+            android:label="GitHub - ViewModel"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="com.smartsoft.github.GitHubActivityUsingViewModel" />
+
+                <category android:name="com.smartsoft.github.GitHubActivityUsingViewModelCategory" />
+            </intent-filter>
+
+        </activity>
+
     </application>
 
 </manifest>

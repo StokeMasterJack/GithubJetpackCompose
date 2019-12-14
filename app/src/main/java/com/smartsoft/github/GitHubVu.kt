@@ -8,25 +8,31 @@ import androidx.ui.foundation.VerticalScroller
 import androidx.ui.layout.*
 import androidx.ui.material.Button
 import androidx.ui.material.MaterialTheme
+import androidx.ui.material.TopAppBar
 import androidx.ui.material.surface.Surface
 import androidx.ui.tooling.preview.Preview
 
 @Composable
 fun GitHubPreview() {
-    GitHubVu(GitHub.dummyUsers) {}
+    GitHubVu(GitHub.dummyUsers, "GitHub Jetpack") {}
 }
 
 @Composable
-fun GitHubVu(users: List<User>, dispatch: GhDispatch) {
+fun GitHubVu(users: List<User>, title: String, dispatch: GhDispatch) {
     MaterialTheme {
         val colors = +MaterialTheme.colors()
         Surface(color = colors.background) {
-            Row(modifier = ExpandedWidth) {
-                Column {
-                    ButtonsVu(dispatch)
-                }
-                Column(modifier = Flexible(1f).wraps(Spacing(8.dp))) {
-                    UsersVu(users)
+            Column() {
+                TopAppBar(
+                    title = { Text(title) }
+                )
+                Row(modifier = ExpandedWidth) {
+                    Column {
+                        ButtonsVu(dispatch)
+                    }
+                    Column(modifier = Flexible(1f).wraps(Spacing(8.dp))) {
+                        UsersVu(users)
+                    }
                 }
             }
         }

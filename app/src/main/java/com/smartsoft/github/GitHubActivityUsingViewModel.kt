@@ -9,7 +9,7 @@ import androidx.ui.core.setContent
 ViewModels are no longer needed with Jetpack Compose.
 But, since Schwab specifically asked how to create a ViewModel in Kotlin, here is the same app using a view model
  */
-class MainActivityUsingViewModel : AppCompatActivity() {
+class GitHubActivityUsingViewModel : AppCompatActivity() {
 
     private val appCtx: AppCtx = AppCtx()
     private val viewModel: GhViewModel = appCtx.mkGhViewModel()
@@ -56,6 +56,6 @@ fun GitHubAppUsingViewModel(gitHub: GitHub, viewModel: GhViewModel) {
 
     val user = viewModel.users.value ?: emptyList()
 
-    GitHubVu(users = user, dispatch = ::dispatch)
+    GitHubVu(users = user, title = "GitHub with ViewModel", dispatch = ::dispatch)
 }
 
