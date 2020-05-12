@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.compose.state
-import androidx.compose.unaryPlus
 import androidx.ui.core.setContent
 
 
@@ -22,7 +21,7 @@ class GitHubActivityUsingState : AppCompatActivity() {
 @Composable
 fun GitHubAppUsingState() {
 
-    val (users, setUsers) = +state { emptyList<User>() }
+    val (users, setUsers) = state { emptyList<User>() }
 
     val appCtx = AppCtx()
     val gitHub = appCtx.mkGitHub()

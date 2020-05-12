@@ -5,14 +5,16 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
-import androidx.ui.core.Text
-import androidx.ui.core.dp
+import androidx.ui.core.Alignment
+import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
+import androidx.ui.foundation.Text
 import androidx.ui.layout.*
 import androidx.ui.material.Button
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.TopAppBar
 import androidx.ui.tooling.preview.Preview
+import androidx.ui.unit.dp
 
 enum class GhMainMenuAction {
     State,
@@ -63,19 +65,24 @@ fun MainMenuVu(dispatch: GhMainMenuDispatch) {
             TopAppBar(
                 title = { Text("GitHub Jetpack") }
             )
-            Row(modifier = Expanded, arrangement = Arrangement.Center) {
+            Row(
+                modifier = Modifier.fillMaxSize(),
+                horizontalArrangement = Arrangement.Center,
+                verticalGravity = Alignment.CenterVertically
+            ) {
                 Column(
-                    modifier = Spacing(8.dp).wraps(ExpandedHeight),
-                    arrangement = Arrangement.Center
+                    modifier = Modifier.padding(8.dp).fillMaxWidth(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalGravity = Alignment.CenterHorizontally
                 ) {
                     Button(
-                        text = "Using State",
-                        modifier = Spacing(8.dp).wraps(Width(200.dp)),
+                        text = {Text("Using State")},
+                        modifier = Modifier.padding(8.dp).width(200.dp),
                         onClick = { dispatch(GhMainMenuAction.State) }
                     )
                     Button(
-                        text = "Using ViewModel",
-                        modifier = Spacing(8.dp).wraps(Width(200.dp)),
+                        text = {Text("Using ViewModel")},
+                        modifier = Modifier.padding(8.dp).width(200.dp),
                         onClick = { dispatch(GhMainMenuAction.ViewModel) }
                     )
                 }
