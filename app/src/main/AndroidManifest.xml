@@ -9,9 +9,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="GitHub Jetpack"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
 
         <activity
             android:name=".MainActivity"
@@ -23,31 +25,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".GitHubActivityUsingState"
-            android:label="GitHub - State"
-            android:theme="@style/AppTheme.NoActionBar">
-
-            <intent-filter>
-                <action android:name="com.smartsoft.github.GitHubActivityUsingState" />
-
-                <category android:name="com.smartsoft.github.GitHubActivityUsingStateCategory" />
-            </intent-filter>
-
-        </activity>
-
-        <activity
-            android:name=".GitHubActivityUsingViewModel"
-            android:label="GitHub - ViewModel"
-            android:theme="@style/AppTheme.NoActionBar">
-
-            <intent-filter>
-                <action android:name="com.smartsoft.github.GitHubActivityUsingViewModel" />
-
-                <category android:name="com.smartsoft.github.GitHubActivityUsingViewModelCategory" />
-            </intent-filter>
-
-        </activity>
 
     </application>
 

@@ -73,7 +73,11 @@ android {
 
 
 dependencies {
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     with(versions) {
+
+        implementation(project(":ssutil"))
+
         implementation(kotlin("stdlib-jdk7", kotlinVersion))
         implementation("androidx.appcompat", "appcompat", appcompat)
 
@@ -86,6 +90,7 @@ dependencies {
         implementation("androidx.ui", "ui-material", compose)
         implementation("androidx.ui", "ui-platform", compose)
         implementation("androidx.ui", "ui-tooling", compose)
+        implementation("androidx.ui", "ui-livedata", compose)
 
         implementation("androidx.core", "core-ktx", coreKtx)
         implementation("androidx.activity", "activity-ktx", activityKtx)
@@ -99,9 +104,9 @@ dependencies {
         implementation("androidx.lifecycle","lifecycle-viewmodel-savedstate",lifecycle)
         kapt("androidx.lifecycle","lifecycle-compiler",lifecycle)
 
-        implementation("com.squareup.retrofit2:retrofit:2.7.0")
-        implementation("com.squareup.okhttp3:logging-interceptor:3.10.0")
-        implementation("com.squareup.retrofit2:converter-gson:2.4.0")
+        implementation("com.squareup.retrofit2:retrofit:2.8.1")
+        implementation("com.squareup.okhttp3:logging-interceptor:4.6.0")
+        implementation("com.squareup.retrofit2:converter-gson:2.8.1")
 
         androidTestImplementation("junit","junit",junit)
         androidTestImplementation("androidx.test","rules",androidxTest)
